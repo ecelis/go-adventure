@@ -1,24 +1,30 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 
 	"github.com/ecelis/go-adventure/lib"
 )
 
 var input string
 
-func getInput() bool {
-	fmt.Printf("\n--> ")
-	_, err := fmt.Scanf("%s", &input)
-	return err == nil
-}
-
 func main() {
 	fmt.Println("Welcome to Little Cave Adventure.")
-	for getInput() {
-		if !lib.Execute(input) {
-			return
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		fmt.Printf("\n--> ")
+
+		scanner.Scan()
+		input = scanner.Text()
+		if len(input) != 0 {
+			fmt.Println(input)
+			if !lib.Execute(input) {
+				return
+			}
+		} else {
+			break
 		}
 	}
 	fmt.Println("\nBye!")
