@@ -5,12 +5,12 @@ import (
 	"strings"
 )
 
-type location struct {
+type Location struct {
 	description string
 	tag         string
 }
 
-var locs = []location{
+var locs = []Location{
 	{description: "an open field", tag: "field"},
 	{description: "a little cave", tag: "cave"},
 }
