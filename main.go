@@ -19,9 +19,8 @@ func main() {
 		scanner.Scan()
 		input = scanner.Text()
 		if len(input) != 0 {
-			fmt.Println(input)
 			if !lib.Execute(input) {
-				return
+				break
 			}
 		} else {
 			break

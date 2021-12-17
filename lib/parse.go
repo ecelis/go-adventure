@@ -10,32 +10,30 @@ type location struct {
 	tag         string
 }
 
-/*
-	locs := []location{
-		location{description: "an open field", tag: "field"},
-		location{description: "a little cave", tag: "cave"},
-	}
-
-*/
-var locs = make([]location, 2)
+var locs = []location{
+	{description: "an open field", tag: "field"},
+	{description: "a little cave", tag: "cave"},
+}
 var playerLocation int = 0
 
 func Execute(input string) bool {
 	var token []string = strings.Split(input, " ")
-	// var noun = "\n"
-	fmt.Println(token)
-	if len(token) > 0 {
+	if len(token) >= 1 {
 		switch token[0] {
 		case "quit":
 			return false
 		case "look":
-			// fmt.Println("It is very dark in here.")
+			if len(token) < 2 {
+				return false
+			}
 			executeLook(token[1])
 		case "go":
-			// fmt.Println("It's too dark to go anywhere.")
+			if len(token) < 2 {
+				return false
+			}
 			executeGo(token[1])
 		default:
-			fmt.Printf("I don't know how to %s", token[0])
+			fmt.Printf("I don't know how to do %s", token[0])
 		}
 	}
 	return true
