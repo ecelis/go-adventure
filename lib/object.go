@@ -1,5 +1,6 @@
 package lib
 
+// TODO learn to use pointers
 type object struct {
 	description string
 	tag         string
